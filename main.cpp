@@ -23,6 +23,39 @@ void displayMenu();
 bool isValidId(const string& id);
 bool isValidScore(double score);
 
+// 统计课程成绩
+void statistics() {
+    cout << "\n===== 统计课程成绩 =====" << endl;
+    string course;
+    cout << "请输入课程名称：";
+    getline(cin, course);
+    
+    double sum = 0;
+    double maxScore = -1;
+    double minScore = 101;
+    int count = 0;
+    
+    for(size_t i = 0; i < records.size(); i++) {
+        const GradeRecord& record = records[i];
+        if(record.course == course) {
+            sum += record.score;
+            if(record.score > maxScore) maxScore = record.score;
+            if(record.score < minScore) minScore = record.score;
+            count++;
+        }
+    }
+    
+    if(count == 0) {
+        cout << "未找到该课程的成绩记录！" << endl;
+        return;
+    }
+    
+    cout << "课程：" << course << endl;
+    cout << "平均分：" << fixed << setprecision(2) << sum / count << endl;
+    cout << "最高分：" << fixed << setprecision(1) << maxScore << endl;
+    cout << "最低分：" << fixed << setprecision(1) << minScore << endl;
+}
+
 int main() {
     int choice;
     do {
@@ -146,39 +179,6 @@ void queryRecord() {
     if(!found) {
         cout << "未找到相关记录！" << endl;
     }
-}
-
-// 统计课程成绩
-void statistics() {
-    cout << "\n===== 统计课程成绩 =====" << endl;
-    string course;
-    cout << "请输入课程名称：";
-    getline(cin, course);
-    
-    double sum = 0;
-    double maxScore = -1;
-    double minScore = 101;
-    int count = 0;
-    
-    for(size_t i = 0; i < records.size(); i++) {
-        const GradeRecord& record = records[i];
-        if(record.course == course) {
-            sum += record.score;
-            if(record.score > maxScore) maxScore = record.score;
-            if(record.score < minScore) minScore = record.score;
-            count++;
-        }
-    }
-    
-    if(count == 0) {
-        cout << "未找到该课程的成绩记录！" << endl;
-        return;
-    }
-    
-    cout << "课程：" << course << endl;
-    cout << "平均分：" << fixed << setprecision(2) << sum / count << endl;
-    cout << "最高分：" << fixed << setprecision(1) << maxScore << endl;
-    cout << "最低分：" << fixed << setprecision(1) << minScore << endl;
 }
 
 // 检查学号是否已存在
