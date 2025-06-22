@@ -24,7 +24,7 @@ bool isValidId(const string& id);
 bool isValidScore(double score);
 
 // 统计课程成绩
-void statistics() {
+/*void statistics() {
     cout << "\n===== 统计课程成绩 =====" << endl;
     string course;
     cout << "请输入课程名称：";
@@ -55,7 +55,7 @@ void statistics() {
     cout << "最高分：" << fixed << setprecision(1) << maxScore << endl;
     cout << "最低分：" << fixed << setprecision(1) << minScore << endl;
 }
-
+*/
 int main() {
     int choice;
     do {
@@ -71,9 +71,9 @@ int main() {
             case 2:
                 queryRecord();
                 break;
-            case 3:
+            /*case 3:
                 statistics();
-                break;
+                break;*/
             case 4:
                 cout << "\n感谢使用学生成绩管理系统，再见！" << endl;
                 return 0;
